@@ -9,7 +9,12 @@ link_libraries(${OpenCV_LIBS} )
 set (EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin/")
 
 if(CUDA_FOUND)
-  set(CUDA_NVCC_FLAGS "-gencode;arch=compute_37,code=compute_37;-gencode;arch=compute_50,code=compute_50;")
+  set(CUDA_NVCC_FLAGS "
+    -gencode;arch=compute_37,code=compute_37;
+    -gencode;arch=compute_50,code=compute_50;
+    -gencode;arch=compute_61,code=compute_61;
+    -gencode;arch=compute_75,code=compute_75;
+  ")
 
   # add -Wextra compiler flag for gcc compilations
   if (UNIX)
